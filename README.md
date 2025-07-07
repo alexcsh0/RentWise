@@ -8,8 +8,8 @@
 
 | Name              | Student Number | SFU Email                |
 |-------------------|----------------|--------------------------|
-| [Your Name]       | [301548329]   | [nva16@sfu.ca]            |
-| [Alex]            | [Number]      | [fillthisinl8r@sfu.ca]    | 
+| [Noah Vattathichirayil] | [301548329]   | [nva16@sfu.ca]            |
+| [Alex]                  | [Number]      | [fillthisinl8r@sfu.ca]    | 
 
 ---
 
