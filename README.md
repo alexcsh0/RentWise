@@ -9,7 +9,7 @@
 | Name              | Student Number | SFU Email                |
 |-------------------|----------------|--------------------------|
 | [Noah Vattathichirayil] | [301548329]   | [nva16@sfu.ca]            |
-| [Alex]                  | [Number]      | [fillthisinl8r@sfu.ca]    | 
+| [Alex Chung]                  | [301549726]      | [sca372@sfu.ca]    | 
 
 ---
 
@@ -24,6 +24,7 @@
 
 ## 📁 Project Structure (WIP)
 
+```
 rentwise/
 ├── data/                 # Raw and processed data files
 ├── models/               # Saved model files (.pkl, .joblib)
@@ -36,6 +37,7 @@ rentwise/
 ├── README.md             # Project documentation
 ├── requirements.txt      # Python dependencies
 └── .gitignore            # Files to exclude from version control
+```
 
 ---
 
