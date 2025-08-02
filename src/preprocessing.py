@@ -41,9 +41,13 @@ def preprocess_data(df):
         cols_to_check.append('sq_feet')
     df = df.dropna(subset=cols_to_check)
 
-    # encode type column
-    if 'type' in df.columns:
-        df = pd.get_dummies(df, columns=['type'], drop_first=True)
+    # identify categorical columns to encode (excluding city, province, address, link)
+    categorical_cols = [col for col in df.select_dtypes(include='object').columns
+                        if col not in ['city', 'province', 'address', 'link']]
+
+    # one-hot encode categorical columns
+    if categorical_cols:
+        df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
 
     # quick stats for sanity check
     print("Preprocessing complete.")
