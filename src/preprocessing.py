@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 RAW_DATA_PATH = "data/raw/rentfaster.csv"
-PROCESSED_DATA_PATH = "data/processed/cleaned_rentals.csv"
+PROCESSED_DATA_PATH = "data/processed/cleaned_rentals_25k.csv"
 
 def load_data(path=RAW_DATA_PATH):
     """Load raw rental listings dataset."""
@@ -13,7 +13,10 @@ def load_data(path=RAW_DATA_PATH):
 def preprocess_data(df):
     """Clean and preprocess the dataset."""
     # keep only Vancouver rentals and create a copy to avoid chained warnings
-    df = df[df['city'].str.lower() == 'vancouver'].copy()
+    # NEVERMIND WE ARE USING EEEEVERY CITY we shall see how this goes
+    #df = df[df['city'].str.lower() == 'vancouver'].copy()
+    df = df[df['price'] <= 7000] # keep it manageable to look at, barely any above 7k anyways
+    df = df[df['price'] >= 100] # remove listings with price of $0
 
     # clean beds column: replace "Studio" with 1 and extract numeric values
     df['beds'] = df['beds'].astype(str)
