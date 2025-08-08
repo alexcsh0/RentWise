@@ -1,12 +1,12 @@
 .DS_Store
 
-# Ignore data
+# Ignore data files (too large for git)
 data/*
 !data/.gitkeep
 
-# Ignore model files
-models/*
-!models/.gitkeep
+# Allow model files for deployment (comment out the line below if models are too large)
+# models/*
+# !models/.gitkeep
 
 # Python cache
 __pycache__/
