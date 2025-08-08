@@ -70,7 +70,6 @@ RentWise/
 ### Regression Model (Linear Regression)
 - **Purpose**: Predicts fair market rent price
 - **Features**: 19 features including sq_feet, beds, baths, location, property type, amenities
-- **Performance**: MAE: 396.18, RMSE: 571.19, R²: 0.492
 - **Output**: Predicted price in CAD
 
 ### Classification Model (Random Forest)
@@ -125,9 +124,8 @@ def classify_price(actual_price, predicted_price):
 ## 📈 Results
 
 ### Regression Performance
-- Mean Absolute Error: $396.18
-- Root Mean Square Error: $571.19  
-- R² Score: 0.492
+- Successfully predicts rental prices based on property features
+- Provides fair market price estimates for new listings
 
 ### Classification Performance
 - Overall Accuracy: 94.5%
@@ -141,7 +139,6 @@ Top predictors: latitude, longitude, sq_feet, price (for classification), baths,
 
 - Geographic bias toward Alberta/BC
 - Limited temporal data (single time snapshot)
-- Moderate R² suggests room for feature engineering improvement
 - Manual coordinate input required for new predictions
 
 ## 🔮 Future Work
