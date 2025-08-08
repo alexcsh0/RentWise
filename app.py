@@ -6,7 +6,7 @@ import os
 
 # Page configuration
 st.set_page_config(
-    page_title="🏠 RentWise - AI Rental Price Predictor",
+    page_title="RentWise - AI Rental Price Predictor",
     page_icon="🏠",
     layout="wide"
 )
