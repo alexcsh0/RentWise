@@ -9,14 +9,13 @@ We built this because finding fairly priced rentals is difficult when you don't 
 - **Price Prediction**: Estimates fair market rent based on property characteristics
 - **Price Classification**: Categorizes listings as underpriced (<90% of predicted), fair (90-110%), or overpriced (>110%)
 - **Web Interface**: Interactive Streamlit app for easy use
-- **Command Line**: Basic Python script for batch processing
 
 ## 👨‍💻 Team
 
-| Name | Student # | Email | Responsibilities |
-|------|-----------|-------|-----------------|
-| Alex Chung | 301549726 | sca372@sfu.ca | ML models, data preprocessing, model evaluation |
-| Noah Vattathichirayil | 301548329 | nva16@sfu.ca | Streamlit interface, UI/UX, deployment |
+| Name | Student # | Email |
+|------|-----------|-------|
+| Alex Chung | 301549726 | sca372@sfu.ca |
+| Noah Vattathichirayil | 301548329 | nva16@sfu.ca |
 
 ## 🚀 Quick Start
 
@@ -30,11 +29,6 @@ We built this because finding fairly priced rentals is difficult when you don't 
 2. **Run the web app:**
    ```bash
    streamlit run app.py
-   ```
-
-3. **Or use command line:**
-   ```bash
-   python main.py
    ```
 
 ## 🛠️ Tech Stack
