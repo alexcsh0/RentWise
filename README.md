@@ -4,6 +4,8 @@ A machine learning project for evaluating rental listing prices using regression
 
 We built this because finding fairly priced rentals is difficult when you don't know what constitutes a reasonable price for a given property. This tool analyzes rental features to predict fair market prices and classify listings as underpriced, fair, or overpriced.
 
+Live: rentwise.streamlit.app
+
 ## Features
 
 - **Price Prediction**: Estimates fair market rent based on property characteristics
