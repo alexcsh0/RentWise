@@ -187,4 +187,4 @@ See `STREAMLIT_README.md` for detailed web app usage instructions.
 
 ---
 
-Final project for CMPT XXX - Machine Learning. Built using scikit-learn, Streamlit, and 25k+ rental listings from RentFaster.ca.
+Final project for CMPT 310 - Machine Learning. SFU. Built using scikit-learn, Streamlit, and 25k+ rental listings from RentFaster.ca.
