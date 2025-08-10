@@ -32,8 +32,9 @@ We built this because finding fairly priced rentals is difficult when you don't 
    ```
 ## If you want to retrain the models from start to finish
 
-1. **Download Dataset:**
+1. **Download Dataset (ONLY IF NEEDED):**
    ```bash
+   If rentfaster.csv is NOT in /data/raw/ then do step 1, if not, skip to step 2
    Download as zip below on kaggle
    https://www.kaggle.com/datasets/sergiygavrylov/25000-canadian-rental-housing-market-june-2024?resource=download
    Move this csv to a folder in the data folder called "raw"
