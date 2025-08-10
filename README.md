@@ -35,6 +35,7 @@ We built this because finding fairly priced rentals is difficult when you don't 
 
 - **Python 3.12** with scikit-learn for ML models
 - **Pandas/NumPy** for data manipulation
+- **ScikitLearn** for for actual ML models
 - **Streamlit** for web interface
 - **Matplotlib/Seaborn** for visualizations
 - **Joblib** for model serialization
@@ -140,6 +141,7 @@ Top predictors: latitude, longitude, sq_feet, price (for classification), baths,
 - [ ] Expand to more Canadian cities
 - [ ] Add temporal price trends
 - [ ] Improve location-based features (postal codes, transit access)
+- [ ] Address input instead of coordinate input
 - [ ] Deploy as web service
 - [ ] Add confidence intervals to predictions
 
@@ -148,7 +150,7 @@ Top predictors: latitude, longitude, sq_feet, price (for classification), baths,
 - Feature engineering significantly impacts model performance
 - Location features are critical for rental price prediction
 - Classification works well when built on regression predictions
-- Streamlit provides rapid prototyping for ML demos
+- Streamlit provides quick prototyping for ML demos
 - Real estate data requires extensive preprocessing
 
 ## 🔗 Usage Examples
