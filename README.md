@@ -10,14 +10,14 @@ We built this because finding fairly priced rentals is difficult when you don't 
 - **Price Classification**: Categorizes listings as underpriced (<90% of predicted), fair (90-110%), or overpriced (>110%)
 - **Web Interface**: Interactive Streamlit app for easy use
 
-## 👨‍💻 Team
+## Team
 
 | Name | Student # | Email |
 |------|-----------|-------|
 | Alex Chung | 301549726 | sca372@sfu.ca |
 | Noah Vattathichirayil | 301548329 | nva16@sfu.ca |
 
-## 🚀 Quick Start
+## Quick Start
 
 1. **Clone and setup:**
    ```bash
@@ -30,8 +30,33 @@ We built this because finding fairly priced rentals is difficult when you don't 
    ```bash
    streamlit run app.py
    ```
+## If you want to retrain the models from start to finish
 
-## 🛠️ Tech Stack
+1. **Download Dataset:**
+   Download as zip below on kaggle
+   https://www.kaggle.com/datasets/sergiygavrylov/25000-canadian-rental-housing-market-june-2024?resource=download
+   Move this csv to a folder in the data folder called "raw"
+   
+3. **Set up environment and install requirements:**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt 
+   ```
+   
+4. **Run scripts:**
+   ```bash
+   python3 src/preprocessing.py
+   ```
+   Run 01_regression_complete.ipynb from start tp finish
+   Run 02_classification_complete.ipynb from start to finish
+
+5. **Run the web app:**
+   ```bash
+   streamlit run app.py
+   ```
+   
+## Tech Stack
 
 - **Python 3.12** with scikit-learn for ML models
 - **Pandas/NumPy** for data manipulation
@@ -40,7 +65,7 @@ We built this because finding fairly priced rentals is difficult when you don't 
 - **Matplotlib/Seaborn** for visualizations
 - **Joblib** for model serialization
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 RentWise/
@@ -60,7 +85,7 @@ RentWise/
 └── requirements.txt           # Dependencies
 ```
 
-## 🤖 Models
+## Models
 
 ### Regression Model (Linear Regression)
 - **Purpose**: Predicts fair market rent price
@@ -85,7 +110,7 @@ Both models use these 19 core features:
  'lease_term_Negotiable', 'lease_term_Short Term']
 ```
 
-## 📊 Dataset
+## Dataset
 
 - **Source**: RentFaster.ca rental listings
 - **Size**: 25,293 listings after preprocessing
@@ -93,7 +118,7 @@ Both models use these 19 core features:
 - **Price Range**: $100 - $7,000 CAD/month
 - **Features**: 169 original columns reduced to 20 key features
 
-## 🔧 Implementation Details
+## Implementation Details
 
 ### Data Preprocessing
 - Price filtering ($100-$7000 range)
@@ -116,7 +141,7 @@ def classify_price(actual_price, predicted_price):
     else: return "fair"
 ```
 
-## 📈 Results
+## Results
 
 ### Regression Performance
 - Successfully predicts rental prices based on property features
@@ -130,13 +155,13 @@ def classify_price(actual_price, predicted_price):
 ### Feature Importance
 Top predictors: latitude, longitude, sq_feet, price (for classification), baths, beds
 
-## 🐛 Known Limitations
+## Known Limitations
 
 - Geographic bias toward Alberta/BC
 - Limited temporal data (single time snapshot)
 - Manual coordinate input required for new predictions
 
-## 🔮 Future Work
+## Future Work
 
 - [ ] Expand to more Canadian cities
 - [ ] Add temporal price trends
@@ -145,7 +170,7 @@ Top predictors: latitude, longitude, sq_feet, price (for classification), baths,
 - [ ] Deploy as web service
 - [ ] Add confidence intervals to predictions
 
-## 📚 Key Learnings
+## Key Learnings
 
 - Feature engineering significantly impacts model performance
 - Location features are critical for rental price prediction
@@ -153,7 +178,7 @@ Top predictors: latitude, longitude, sq_feet, price (for classification), baths,
 - Streamlit provides quick prototyping for ML demos
 - Real estate data requires extensive preprocessing
 
-## 🔗 Usage Examples
+## Usage Examples
 
 See `STREAMLIT_README.md` for detailed web app usage instructions.
 
