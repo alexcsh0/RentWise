@@ -47,9 +47,9 @@ We built this because finding fairly priced rentals is difficult when you don't 
 4. **Run scripts:**
    ```bash
    python3 src/preprocessing.py
-   ```
-   Run 01_regression_complete.ipynb from start tp finish
+   Run 01_regression_complete.ipynb from start to finish
    Run 02_classification_complete.ipynb from start to finish
+   ```
 
 5. **Run the web app:**
    ```bash
