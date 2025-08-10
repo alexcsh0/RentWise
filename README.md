@@ -86,7 +86,6 @@ RentWise/
 │   ├── model.py               # Model training utilities
 │   └── evaluate.py            # Evaluation metrics
 ├── app.py                     # Streamlit web application
-├── main.py                    # Command line interface
 └── requirements.txt           # Dependencies
 ```
 
