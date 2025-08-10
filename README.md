@@ -33,9 +33,11 @@ We built this because finding fairly priced rentals is difficult when you don't 
 ## If you want to retrain the models from start to finish
 
 1. **Download Dataset:**
+   ```bash
    Download as zip below on kaggle
    https://www.kaggle.com/datasets/sergiygavrylov/25000-canadian-rental-housing-market-june-2024?resource=download
    Move this csv to a folder in the data folder called "raw"
+   ```
    
 3. **Set up environment and install requirements:**
    ```bash
