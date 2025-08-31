@@ -11,20 +11,20 @@ def load_data(path=RAW_DATA_PATH):
     return df
 
 def preprocess_data(df):
-    """Clean and preprocess the dataset."""
+    """Clean and preprocess the dataset - resilient data pipeline handles inconsistent listing formats, missing values, text-based inputs, and Studio variations."""
     # keep only Vancouver rentals and create a copy to avoid chained warnings
     # NEVERMIND WE ARE USING EEEEVERY CITY we shall see how this goes
     #df = df[df['city'].str.lower() == 'vancouver'].copy()
     df = df[df['price'] <= 7000] # keep it manageable to look at, barely any above 7k anyways
     df = df[df['price'] >= 100] # remove listings with price of $0
 
-    # clean beds column: replace "Studio" with 1 and extract numeric values
+    # Resilient handling of inconsistent listing formats: handle Studio variations
     df['beds'] = df['beds'].astype(str)
     df['beds'] = df['beds'].replace({'Studio': '1'})
     df['beds'] = df['beds'].str.extract(r'(\d+)')
     df['beds'] = pd.to_numeric(df['beds'], errors='coerce')
 
-    # clean sq_feet column: extract numeric values only
+    # text-based square footage extraction from inconsistent formats
     if 'sq_feet' in df.columns:
         df['sq_feet'] = df['sq_feet'].astype(str).str.extract(r'(\d+)')
         df['sq_feet'] = pd.to_numeric(df['sq_feet'], errors='coerce')

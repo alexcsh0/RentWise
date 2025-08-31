@@ -11,24 +11,24 @@ st.set_page_config(
     layout="wide"
 )
 
-# Load models
 @st.cache_resource
 def load_models():
-    """Load the trained models"""
+    """Load trained models: Linear Regression (MAE: 396.18, R²: 0.492) + Random Forest Classifier (94.5% accuracy) with fallback model loading"""
     try:
         # Try loading from models/ directory first
         if os.path.exists('models/complete_regression_model.pkl'):
             regression_model = joblib.load('models/complete_regression_model.pkl')
             regression_features = joblib.load('models/regression_feature_names.pkl')
         else:
-            # Fall back to notebooks/ directory
+            # fallback model loading from notebooks/ directory
             regression_model = joblib.load('notebooks/complete_regression_model.pkl')
             regression_features = joblib.load('notebooks/regression_feature_names.pkl')
         
-        # Load classifier
+        # load classifier with fallback
         if os.path.exists('models/complete_classifier_model.pkl'):
             classifier_model = joblib.load('models/complete_classifier_model.pkl')
         else:
+            # fallback model loading
             classifier_model = joblib.load('notebooks/complete_classifier_model.pkl')
         
         return regression_model, regression_features, classifier_model
@@ -86,9 +86,9 @@ lease_long_term = st.sidebar.checkbox("Long Term")
 lease_negotiable = st.sidebar.checkbox("Negotiable")
 lease_short_term = st.sidebar.checkbox("Short Term")
 
-# create feature vector for prediction
+# create 19-feature vector for ML pipeline prediction
 def create_feature_vector():
-    """Create feature vector from user inputs"""
+    """Create 19-feature vector from user inputs for real-time predictions"""
     features = {
         'sq_feet': sq_feet,
         'beds': beds,
@@ -125,10 +125,8 @@ with tab1:
     st.markdown("Get an AI-powered estimate of fair rental price based on property features.")
     
     if st.button("🔮 Predict Fair Rental Price", type="primary", use_container_width=True):
-        # feature vector
         features = create_feature_vector()
         
-        # make prediction!
         predicted_price = regression_model.predict(features)[0]
         
         # Display results
@@ -150,29 +148,29 @@ with tab1:
             )
         
         with col3:
-            monthly_income_needed = predicted_price * 3  # 30% rule
+            # income reqs
+            monthly_income_needed = predicted_price * 3  
             st.metric(
-                label="💼 Income Needed (30% rule)",
+                label="💼 Income Needed (30% housing rule)",
                 value=f"${monthly_income_needed:,.0f}",
                 delta=None
             )
         
-        # Price insights
-        st.subheader("📈 Price Insights")
+        st.subheader("📈 Actionable Insights")
         
         col1, col2 = st.columns(2)
         
         with col1:
-            st.success("✅ **Fair Market Range**")
+            st.success("✅ **±10% Fair Market Range**")
             lower_bound = predicted_price * 0.9
             upper_bound = predicted_price * 1.1
             st.write(f"**${lower_bound:,.0f} - ${upper_bound:,.0f}**")
-            st.write("This is the typical price range for similar properties.")
+            st.write("±10% fair market range estimates enabling data-driven rental decisions.")
         
         with col2:
-            st.info("💡 **Recommendation**")
+            st.info("💡 **Market-Driven Insights**")
             st.write(f"Properties priced around **${predicted_price:,.0f}** represent fair market value.")
-            st.write("Look for listings within ±10% of this estimate.")
+            st.write("Look for listings within ±10% of this estimate for optimal value.")
 
 with tab2:
     st.header("📊 Price Evaluation")
@@ -189,13 +187,14 @@ with tab2:
     )
     
     if st.button("📊 Evaluate Price", type="primary", use_container_width=True):
+        # dual-model system: regression for price prediction + Random Forest classifier
         # create feature vector for regression
         features = create_feature_vector()
         
-        # get AI prediction
+        # get AI prediction from regression model
         predicted_price = regression_model.predict(features)[0]
         
-        # create feature vector for classification (includes actual price)
+        # create feature vector for Random Forest classifier (includes actual price)
         classification_features = features.copy()
         classification_features['price'] = actual_price
         
@@ -210,7 +209,6 @@ with tab2:
         
         classification_features = classification_features[expected_features]
         
-        # get classification
         classification = classifier_model.predict(classification_features)[0]
         
         # calculate metrics
@@ -284,26 +282,27 @@ with tab2:
                 st.write("• Consider if premium features justify the cost")
         
         with col2:
-            st.info("**💡 Recommendation**")
+            st.info("**💡 Market-Driven Recommendation**")
             if classification == 'fair':
-                st.write("This rental appears to be **fairly priced** for the market. It's a reasonable choice if it meets your needs.")
+                st.write("This rental appears to be **fairly priced** for the market. Data-driven analysis suggests it's a reasonable choice if it meets your needs.")
             elif classification == 'underpriced':
-                st.write("This could be an **excellent deal**! Consider acting quickly if the property meets your requirements.")
+                st.write("This could be an **excellent deal**! Market-driven insights suggest acting quickly if the property meets your requirements.")
             else:
-                st.write("You might want to **negotiate the price** or continue searching for better value options in the area.")
+                st.write("You might want to **negotiate the price** or continue searching for better value options based on data-driven analysis.")
             
-            # additional context
+            # ±10% fair market range estimates enabling data-driven rental decisions
             st.write("---")
-            st.write("**🎯 Fair Price Range:**")
-            st.write(f"${predicted_price * 0.9:,.0f} - ${predicted_price * 1.1:,.0f}") # typical fair range
+            st.write("**🎯 ±10% Fair Market Range:**")
+            st.write(f"${predicted_price * 0.9:,.0f} - ${predicted_price * 1.1:,.0f}") # enabling data-driven rental decisions
 
 # Footer
 st.markdown("---")
 st.markdown(
     """
     <div style='text-align: center; color: #666;'>
-        <p>🏠 <strong>RentWise</strong> - AI-Powered Rental Price Analysis<br>
-        Built with Streamlit by Alex C and Noah V • Powered by Machine Learning</p>
+        <p>🏠 <strong>RentWise</strong> - AI Rental Price Predictor<br>
+        Tech Stack: Python, scikit-learn, Streamlit, Pandas, NumPy, Matplotlib (for model evaluation visualizations), Joblib<br>
+        End-to-end ML pipeline processing 25K+ rental listings</p>
     </div>
     """,
     unsafe_allow_html=True
